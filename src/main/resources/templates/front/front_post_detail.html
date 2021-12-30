@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="csrf-token" content="sdfsadfasdfsdfsda">
+  <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+  <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+  <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="../js/common/zlajax.js"></script>
+  <link rel="stylesheet" href="../css/front/front_base.css">
+  <link rel="stylesheet" href="../css/front/post_detail.css">
+  <title>首页-知了传课</title>
+</head>
+<body>
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">知了传课Python论坛</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">首页<span class="sr-only">(current)</span></a></li>
+        </ul>
+        <form class="navbar-form navbar-left">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="请输入关键字">
+          </div>
+          <button type="submit" class="btn btn-default">搜索</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              周杰伦
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a href="#">后台管理</a></li>
+              <li><a href="#">设置</a></li>
+              <li><a href="#">注销</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <div class="main-container">
+    <div class="post-container">
+      <h2>如何零基础自学Python？</h2>
+      <p class="post-info-group">
+        <span>发表时间：2022年12月12日</span>
+        <span>作者：张三</span>
+        <span>所属板块：Flask</span>
+        <span>评论数：100</span>
+      </p>
+      <div class="post-content"><h2>一、安装MySQL：</h2><pre class="brush:bash;toolbar:false">sudo&nbsp;apt&nbsp;install&nbsp;mysql-server&nbsp;mysql-client</pre><p><br></p><h2>二、设置密码：<br></h2><p><strong>第一步：</strong>首先查看MySQL默认生成的随机密码：</p><pre class="brush:bash;toolbar:false">sudo&nbsp;cat&nbsp;/etc/mysql/debian.cnf</pre><p>可以看到类似下面的输出：<br></p><pre class="brush:bash;toolbar:false">#&nbsp;Automatically&nbsp;generated&nbsp;for&nbsp;Debian&nbsp;scripts.&nbsp;DO&nbsp;NOT&nbsp;TOUCH!
+[client]
+host&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;localhost
+user&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;debian-sys-maint
+password&nbsp;=&nbsp;CnoJI9sJ9rT12345
+socket&nbsp;&nbsp;&nbsp;=&nbsp;/var/run/mysqld/mysqld.sock
+[mysql_upgrade]
+host&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;localhost
+user&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;debian-sys-maint
+password&nbsp;=&nbsp;CnoJI9sJ9rT12345
+socket&nbsp;&nbsp;&nbsp;=&nbsp;/var/run/mysqld/mysqld.sock</pre><p><br></p><p><strong>第二步：</strong>然后使用以上的user和password进行登录：</p><pre class="brush:bash;toolbar:false">mysql&nbsp;-u&nbsp;debian-sys-maint&nbsp;-p</pre><p>输入以上password的值后登录成功。<br></p><p><br></p><p><strong>第三步：</strong>修改root密码：</p><pre class="brush:bash;toolbar:false">alter&nbsp;user&nbsp;"root"@"localhost"&nbsp;identified&nbsp;with&nbsp;mysql_native_password&nbsp;by&nbsp;"root密码";
+flus&nbsp;privileges;</pre><p>即可启动root账号的密码。</p>  </div>
+    </div>
+    <div class="comment-group">
+      <h3>评论列表</h3>
+      <ul class="comment-list-group">
+        <li>
+          <div class="avatar-group">
+            <img src="../images/avatar.jpg" alt="">
+          </div>
+          <div class="comment-content">
+            <p class="author-info">
+              <span>张三</span>
+              <span>2022年12月12日</span>
+            </p>
+            <p class="comment-txt">
+              哈哈哈，讲得真好
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="add-comment-group">
+      <h3>发表评论</h3>
+      <textarea name="comment" id="comment-textarea" style="width: 100%; resize:vertical;"></textarea>
+      <div class="comment-btn-group">
+        <button class="btn btn-primary" id="comment-btn">发表评论</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

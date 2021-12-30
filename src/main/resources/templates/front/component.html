@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="base(head,title,body)">
+<head>
+    <meta charset="UTF-8">
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/front/front_base.css}">
+    <link rel="stylesheet" th:href="@{/sweetalert/sweetalert.css}">
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script th:src="@{/sweetalert/sweetalert.min.js}"></script>
+    <script th:src="@{/sweetalert/sweetAlertUtil.js}"></script>
+
+    <th:block th:replace="${head}"/>
+    <title th:replace="${title}"></title>
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">知了传课Python论坛</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">首页<span class="sr-only">(current)</span></a></li>
+            </ul>
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="请输入关键字">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li sa:login class="dropdown">
+                    <a href="javascript:;" class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        [[${stp.getSession().get("loginUser")}]]
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a href="#">后台管理</a></li>
+                        <li><a th:href="@{/setting}">设置</a></li>
+                        <li><a th:href="@{/logout}">注销</a></li>
+                    </ul>
+                </li>
+                <li sa:notLogin><a th:href="@{/login.html}">登录</a></li>
+                <li sa:notLogin><a th:href="@{/register.html}">注册</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="main-container">
+    <div th:replace="${body}"></div>
+</div>
+
+</body>
+</html>
