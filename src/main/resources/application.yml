@@ -23,6 +23,16 @@ spring:
     password: zxndbuhorfpcbiia
     host: smtp.qq.com
 
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 50MB
+
 password:
   key: abcdefghijklmnopqrstuvwxyz0123456789
+
+qiniu:
+  url: http://r4yotdqih.hd-bkt.clouddn.com/
+
+
 

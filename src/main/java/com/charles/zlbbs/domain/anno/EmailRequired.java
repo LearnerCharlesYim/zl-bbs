@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Constraint(validatedBy = EmailRequiredValidator.class)
-public @interface RequiredEmail {
+public @interface EmailRequired {
 
     boolean required() default true;
 

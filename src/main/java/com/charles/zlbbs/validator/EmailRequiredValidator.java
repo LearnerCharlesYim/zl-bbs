@@ -1,6 +1,6 @@
 package com.charles.zlbbs.validator;
 
-import com.charles.zlbbs.domain.anno.RequiredEmail;
+import com.charles.zlbbs.domain.anno.EmailRequired;
 import com.charles.zlbbs.domain.entity.User;
 import com.charles.zlbbs.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +9,7 @@ import org.springframework.util.StringUtils;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class EmailRequiredValidator implements ConstraintValidator<RequiredEmail, String> {
+public class EmailRequiredValidator implements ConstraintValidator<EmailRequired, String> {
 
     @Autowired
     private UserRepository userRepository;
@@ -17,7 +17,7 @@ public class EmailRequiredValidator implements ConstraintValidator<RequiredEmail
     private boolean required = false;
 
     @Override
-    public void initialize(RequiredEmail constraintAnnotation) {
+    public void initialize(EmailRequired constraintAnnotation) {
         required = constraintAnnotation.required();
     }
 
@@ -31,7 +31,7 @@ public class EmailRequiredValidator implements ConstraintValidator<RequiredEmail
                 User user = userRepository.findByEmail(s);
                 return user != null;
             } else {
-                return false;
+                return true;
             }
         }
     }

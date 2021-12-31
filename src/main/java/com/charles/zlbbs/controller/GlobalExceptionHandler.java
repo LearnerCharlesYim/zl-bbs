@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.ConstraintViolationException;
 
 
 @ControllerAdvice
@@ -34,13 +35,21 @@ public class GlobalExceptionHandler {
     }
 
     @ResponseBody
-    @ExceptionHandler(BindException.class)
+    @ExceptionHandler({BindException.class})
     public R handleBindException(BindException e) {
         // ex.getFieldError():随机返回一个对象属性的异常信息。如果要一次性返回所有对象属性异常信息，则调用ex.getAllErrors()
         FieldError fieldError = e.getFieldError();
         // 生成返回结果
         log.info("发送参数验证异常！原因是：{}", fieldError.getDefaultMessage());
         return R.fail(fieldError.getDefaultMessage());
+    }
+
+    @ResponseBody
+    @ExceptionHandler({ConstraintViolationException.class})
+    public R handleConstraintViolationException(ConstraintViolationException e) {
+        // 生成返回结果
+        log.info("发送参数验证异常！原因是：{}", e.getMessage().split(": ")[1]);
+        return R.fail(e.getMessage().split(": ")[1]);
     }
 
     @ResponseBody

@@ -28,7 +28,7 @@ public class User {
     private String password;
 
     @Column(length = 200)
-    private String avatar = "avarar.jpg";
+    private String avatar = "/images/avatar.jpg";
 
     @Column(length = 200)
     private String signature;
