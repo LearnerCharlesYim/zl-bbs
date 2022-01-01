@@ -10,13 +10,13 @@ public class BizException extends RuntimeException {
     }
 
     public BizException(BaseErrorInfoInterface errorInfo) {
-        super(String.valueOf(errorInfo.getCode()));
+        super(errorInfo.getMessage());
         this.errorCode = errorInfo.getCode();
         this.errorMsg = errorInfo.getMessage();
     }
 
     public BizException(BaseErrorInfoInterface errorInfo, Throwable cause) {
-        super(String.valueOf(errorInfo.getCode()), cause);
+        super(errorInfo.getMessage(), cause);
         this.errorCode = errorInfo.getCode();
         this.errorMsg = errorInfo.getMessage();
     }
@@ -27,7 +27,7 @@ public class BizException extends RuntimeException {
     }
 
     public BizException(Integer errorCode, String errorMsg) {
-        super(String.valueOf(errorCode));
+        super(errorMsg);
         this.errorCode = errorCode;
         this.errorMsg = errorMsg;
     }

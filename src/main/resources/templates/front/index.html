@@ -55,35 +55,17 @@
                 <li><a href="#">评论最多</a></li>
             </ul>
             <ul class="post-list-group">
-                <li>
+                <li th:each="post:${posts}">
                     <div class="author-avatar-group">
-                        <img src="../images/avatar.jpg" alt="">
+                        <img th:src="@{${url+post.author.avatar}}" alt="">
                     </div>
                     <div class="post-info-group">
                         <p class="post-title">
-                            <a href="post_detail.html">如何零基础自学Python？</a>
+                            <a href="#">[[${ post.title }]]</a>
                         </p>
                         <p class="post-info">
-                            <span>作者：张三</span>
-                            <span>发表时间：2022年12月12日</span>
-                            <span>评论:10</span>
-                            <span>阅读:100</span>
-                        </p>
-                    </div>
-                </li>
-                <li>
-                    <div class="author-avatar-group">
-                        <img src="../images/avatar.jpg" alt="">
-                    </div>
-                    <div class="post-info-group">
-                        <p class="post-title">
-                            <a href="#">如何零基础自学Python？</a>
-                        </p>
-                        <p class="post-info">
-                            <span>作者：张三</span>
-                            <span>发表时间：2022年12月12日</span>
-                            <span>评论:10</span>
-                            <span>阅读:100</span>
+                            <span>作者：[[${ post.author.username}]]</span>
+                            <span>发表时间：[[${ post.createdTime }]]</span>
                         </p>
                     </div>
                 </li>
@@ -92,14 +74,11 @@
     </div>
     <div class="sm-container">
         <div style="padding-bottom:10px;">
-            <a href="public_post.html" class="btn btn-warning btn-block">发布帖子</a>
+            <a th:href="@{/publish}" class="btn btn-warning btn-block">发布帖子</a>
         </div>
         <div class="list-group">
             <a href="/" class="list-group-item active">所有板块</a>
-            <a href="#" class="list-group-item">Python</a>
-            <a href="#" class="list-group-item">Flask</a>
-            <a href="#" class="list-group-item">Django</a>
-            <a href="#" class="list-group-item">爬虫</a>
+            <a href="#" th:each="board:${boards}" class="list-group-item">[[${board.name}]]</a>
         </div>
     </div>
 </div>

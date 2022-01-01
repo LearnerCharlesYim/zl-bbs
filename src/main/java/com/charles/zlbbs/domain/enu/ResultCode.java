@@ -36,6 +36,7 @@ public enum ResultCode implements BaseErrorInfoInterface {
 
     GRAPH_CAPTCHA_EXPIRED(4003, "图形验证码过期"),
     GRAPH_CAPTCHA_ERROR(4004, "图形验证码错误"),
+    BOARD_NOT_FOUND(4005, "板块未找到"),
 
     /* 系统错误 */
     UNKNOWN_ERROR(5000, "接口未知异常，请稍后再试"),

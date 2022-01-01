@@ -2,14 +2,17 @@ package com.charles.zlbbs.domain.entity;
 
 import com.charles.zlbbs.domain.enu.Gender;
 import lombok.Data;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Data
+@ToString(exclude = {"posts","comments"})
 public class User {
 
     @Id
@@ -43,5 +46,11 @@ public class User {
     private Boolean staff = false;
 
     private Boolean active = true;
+
+    @OneToMany(mappedBy = "author")
+    private List<Post> posts;
+
+    @OneToMany(mappedBy = "author")
+    private List<Comment> comments;
 
 }
