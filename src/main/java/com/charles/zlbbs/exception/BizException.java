@@ -48,8 +48,4 @@ public class BizException extends RuntimeException {
         this.errorMsg = errorMsg;
     }
 
-    @Override
-    public synchronized Throwable fillInStackTrace() {
-        return this;
-    }
 }

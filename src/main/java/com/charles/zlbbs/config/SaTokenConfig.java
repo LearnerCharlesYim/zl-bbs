@@ -9,6 +9,7 @@ import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 
 @Configuration
 public class SaTokenConfig {
+
     // Sa-Token 标签方言 (Thymeleaf版)
     @Bean
     public SaTokenDialect getSaTokenDialect() {
@@ -19,6 +20,13 @@ public class SaTokenConfig {
     @Autowired
     private void configureThymeleafStaticVars(ThymeleafViewResolver viewResolver) {
         viewResolver.addStaticVariable("stp", StpUtil.stpLogic);
+        viewResolver.addStaticVariable("test", new MyTest());
+    }
+
+    static class MyTest{
+        public static String m1(){
+            return "hello world";
+        }
     }
 
 

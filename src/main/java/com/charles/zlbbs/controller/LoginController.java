@@ -8,10 +8,7 @@ import com.charles.zlbbs.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class LoginController {
@@ -30,7 +27,7 @@ public class LoginController {
 
     @ResponseBody
     @PostMapping("/login")
-    public R login(@Validated LoginParam loginParam) {
+    public R login(@Validated @RequestBody LoginParam loginParam) {
         loginService.login(loginParam);
         return R.ok();
     }

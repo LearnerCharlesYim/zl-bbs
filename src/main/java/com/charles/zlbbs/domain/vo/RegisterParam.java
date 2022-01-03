@@ -32,7 +32,6 @@ public class RegisterParam {
     @NotBlank(message = "email-uuid缺失")
     private String emailUuid;
 
-    @NotBlank(message = "graph-uuid缺失")
     private String graphUuid;
 
 }
